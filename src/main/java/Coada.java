@@ -49,7 +49,6 @@ public class Coada implements Runnable{
     public BlockingQueue<Clients> getClienti() {
         return clienti;
     }
-
     public void run() {
         while(true) {
             try {
@@ -61,13 +60,12 @@ public class Coada implements Runnable{
             decrementeazaPerioadaDeAsteptare() ;
         }
     }
-
     public String toString() {
         return "Server{" +
-                "clienti=" + clienti +
-                ", perioadaDeAsteptare=" + perioadaDeAsteptare +
-                ", averageWaitingTime=" + averageWaitingTime +
-                ", averageServiceTime=" + averageServiceTime +
+                "clienti = " + clienti +
+                ", perioadaDeAsteptare = " + perioadaDeAsteptare +
+                ", averageWaitingTime = " + averageWaitingTime +
+                ", averageServiceTime = " + averageServiceTime +
                 '}';
     }
 }

@@ -32,10 +32,9 @@ public class Program {
     public int getNrCozi() {
         return nrCozi;
     }
-
     public String toString() {
         return "Program{" +
-                "cozi=" + cozi +
+                "cozi = " + cozi +
                 '}';
     }
 }

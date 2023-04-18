@@ -14,8 +14,9 @@ public class SimulationManager implements Runnable {
     private JTextArea rez;
     private Program p1 ;
     private List<Clients> generatedClienti = new ArrayList<>();
-    public SimulationManager(int timeLimit,int minArivTime, int maxArivTime, int minServiceTime, int maxServiceTime, int numberOfClients, int numberOfCozi) {
+    public SimulationManager(int timeLimit,int minArivTime, int maxArivTime, int minServiceTime, int maxServiceTime, int numberOfClients, int numberOfCozi, JTextArea rez) {
         this.timeLimit = timeLimit ;
+        this.rez = rez ;
         p1 = new Program(numberOfCozi);
         while (numberOfClients > 0){
             int idRandom = ThreadLocalRandom.current().nextInt(1, 1000 + 1);
@@ -27,7 +28,6 @@ public class SimulationManager implements Runnable {
         }
         Collections.sort(generatedClienti, new ArivTimeComp());
     }
-
     public void run() {
         int curTime = 1 ;
         while(curTime < timeLimit){
@@ -75,9 +75,9 @@ public class SimulationManager implements Runnable {
                 }
             }
 
-            System.out.println("Time " + curTime);
-            System.out.println("Waiting clients: " + generatedClienti);
-            System.out.println("Queue " + ":" + p1.getCozi());
+            rez.append("Time " + curTime + "\n");
+            rez.append("Waiting clients: " + generatedClienti + "\n");
+            rez.append("Queue " + p1.getCozi() + "\n");
             curTime++ ;
             try {
                 Thread.sleep(1000);
