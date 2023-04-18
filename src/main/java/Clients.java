@@ -17,7 +17,6 @@ public class Clients {
         this.tService = tService;
         return this.tService;
     }
-
     public String toString(){
         return "[" + ID + "," + tArrival + "," + tService + "]" ;
     }

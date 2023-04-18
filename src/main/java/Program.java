@@ -2,7 +2,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 public class Program {
-    private List<Coada> cozi = new LinkedList<>();
+    private List<Coada> cozi = new LinkedList<>() ;
     private int nrCozi;
     public Program(int nrCozi) {
         for (int i = 0; i < nrCozi; i++) {
@@ -31,6 +31,15 @@ public class Program {
     }
     public int getNrCozi() {
         return nrCozi;
+    }
+    public int getPeekHour(){
+        int max = -1 ;
+        for(int i = 0 ; i < cozi.size() ; i++ ){
+            if(max < cozi.get(i).getPerioadaDeAsteptare().get()){
+                max = cozi.get(i).getPerioadaDeAsteptare().get() ;
+            }
+        }
+        return max ;
     }
     public String toString() {
         return "Program{" +

@@ -11,6 +11,7 @@ public class SimulationManager implements Runnable {
     public int maxArivTime;
     public int minServiceTime;
     public int maxServiceTime;
+    public ArrayList<Integer> peekHour = new ArrayList<Integer>() ;
     private JTextArea rez;
     private Program p1 ;
     private List<Clients> generatedClienti = new ArrayList<>();
@@ -73,6 +74,22 @@ public class SimulationManager implements Runnable {
                     cozi.get(i).setAverageWaitingTime(0);
                     cozi.get(i).setAverageServiceTime(0);
                 }
+            }
+
+            int max = p1.getPeekHour() ;
+            peekHour.add(max);
+
+            if(peekHour.size() == (timeLimit - 1)){
+                int max2 = -1 ;
+                int retine = -1 ;
+                for(int i = 0 ; i < peekHour.size(); i++){
+                    if(max2 < peekHour.get(i)){
+                        max2 = peekHour.get(i);
+                        retine = i ;
+                    }
+                }
+                retine += 1 ;
+                rez.append("PeekHour: " + max2 + " la timpul: " + retine );
             }
 
             rez.append("Time " + curTime + "\n");
